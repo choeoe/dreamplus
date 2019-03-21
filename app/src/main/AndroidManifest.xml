@@ -10,6 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".IndividualActivity"></activity>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.chinese_learning.FileProvider"
@@ -58,7 +60,7 @@
                     android:scheme="rong" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddActionActivity"></activity>
+        <activity android:name=".AddActionActivity" />
     </application>
 
 </manifest>

@@ -24,7 +24,7 @@ import io.rong.imlib.model.UserInfo;
 public class MainActivity extends BaseActivity {
 
 
-    private String token = "kh0SZI3+Z4B68osGRrSkvKakbMPkWHmJrd7TosH6WTgnr73jj+aNQv8Or1NpAA7UAjpzJi6fG3SE4Bca1HwM/w==";
+    private String token = "KCydvkQ3uEqolb6dEEdbHaakbMPkWHmJrd7TosH6WThruiNq+JMmz91IaOPKazGai6c22flPDcWE4Bca1HwM/w==";
 
     @OnClick(R.id.button)
     public void start(){

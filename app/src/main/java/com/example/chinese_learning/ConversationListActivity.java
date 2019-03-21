@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -22,6 +23,18 @@ public class ConversationListActivity extends BaseActivity {
 
     private List<Actions> actionsList = new ArrayList<>();
 
+    private NavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener =
+            new NavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                    switch (menuItem.getItemId()){
+                        case R.id.side_portrait:
+                            startActivity(new Intent(ConversationListActivity.this,IndividualActivity.class));
+                            return true;
+                    }
+                    return false;
+                }
+            };
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -66,6 +79,8 @@ public class ConversationListActivity extends BaseActivity {
         setContentView(R.layout.activity_conversation_list);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        NavigationView navigationView = findViewById(R.id.side_menu);
+        navigationView.setNavigationItemSelectedListener(onNavigationItemSelectedListener);
         RongIM.setUserInfoProvider(new RongIM.UserInfoProvider() {
 
             @Override
@@ -73,7 +88,15 @@ public class ConversationListActivity extends BaseActivity {
                 return new UserInfo("12345","Frank",Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551702963591&di=af106dc95e8083f71adc92ccacb6e1cf&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201407%2F19%2F20140719130553_ShUBe.thumb.700_0.jpeg"));//根据 userId 去你的用户系统里查询对应的用户信息返回给融云 SDK。
             }
         }, true);
+        RongIM.setUserInfoProvider(new RongIM.UserInfoProvider() {
+            @Override
+            public UserInfo getUserInfo(String s) {
+
+                return new UserInfo("123","me",Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553739821&di=63c556b5e35da2d4cb04f3dc4196ccf7&imgtype=jpg&er=1&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201412%2F17%2F20141217005427_mcu8x.thumb.700_0.jpeg"));
+            }
+        },true);
         RongIM.getInstance().refreshUserInfoCache(new UserInfo("12345","Frank",Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551702963591&di=af106dc95e8083f71adc92ccacb6e1cf&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201407%2F19%2F20140719130553_ShUBe.thumb.700_0.jpeg")));
+        RongIM.getInstance().refreshUserInfoCache(new UserInfo("123","me",Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553739821&di=63c556b5e35da2d4cb04f3dc4196ccf7&imgtype=jpg&er=1&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201412%2F17%2F20141217005427_mcu8x.thumb.700_0.jpeg")));
         UserInfo testUser = new UserInfo("12345","Frank",
                 Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551702963591&di=af106dc95e8083f71adc92ccacb6e1cf&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201407%2F19%2F20140719130553_ShUBe.thumb.700_0.jpeg"));
         friendList.add(testUser);
