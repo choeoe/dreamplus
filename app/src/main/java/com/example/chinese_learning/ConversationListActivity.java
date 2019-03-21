@@ -10,8 +10,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.rong.imkit.RongIM;
@@ -27,9 +29,9 @@ public class ConversationListActivity extends BaseActivity {
             new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                    switch (menuItem.getItemId()){
+                    switch (menuItem.getItemId()) {
                         case R.id.side_portrait:
-                            startActivity(new Intent(ConversationListActivity.this,IndividualActivity.class));
+                            startActivity(new Intent(ConversationListActivity.this, IndividualActivity.class));
                             return true;
                     }
                     return false;
@@ -69,10 +71,11 @@ public class ConversationListActivity extends BaseActivity {
 
 
     @OnClick(R.id.add_action)
-    public void startAddAction(){
-        Intent intent = new Intent(this,AddActionActivity.class);
+    public void startAddAction() {
+        Intent intent = new Intent(this, AddActionActivity.class);
         startActivity(intent);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,25 +88,24 @@ public class ConversationListActivity extends BaseActivity {
 
             @Override
             public UserInfo getUserInfo(String userId) {
-                return new UserInfo("12345","Frank",Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551702963591&di=af106dc95e8083f71adc92ccacb6e1cf&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201407%2F19%2F20140719130553_ShUBe.thumb.700_0.jpeg"));//根据 userId 去你的用户系统里查询对应的用户信息返回给融云 SDK。
+                return new UserInfo("12345", "Frank", Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551702963591&di=af106dc95e8083f71adc92ccacb6e1cf&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201407%2F19%2F20140719130553_ShUBe.thumb.700_0.jpeg"));//根据 userId 去你的用户系统里查询对应的用户信息返回给融云 SDK。
             }
         }, true);
         RongIM.setUserInfoProvider(new RongIM.UserInfoProvider() {
             @Override
             public UserInfo getUserInfo(String s) {
-
-                return new UserInfo("123","me",Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553739821&di=63c556b5e35da2d4cb04f3dc4196ccf7&imgtype=jpg&er=1&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201412%2F17%2F20141217005427_mcu8x.thumb.700_0.jpeg"));
+                return new UserInfo("123", "me", Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553739821&di=63c556b5e35da2d4cb04f3dc4196ccf7&imgtype=jpg&er=1&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201412%2F17%2F20141217005427_mcu8x.thumb.700_0.jpeg"));
             }
-        },true);
-        RongIM.getInstance().refreshUserInfoCache(new UserInfo("12345","Frank",Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551702963591&di=af106dc95e8083f71adc92ccacb6e1cf&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201407%2F19%2F20140719130553_ShUBe.thumb.700_0.jpeg")));
-        RongIM.getInstance().refreshUserInfoCache(new UserInfo("123","me",Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553739821&di=63c556b5e35da2d4cb04f3dc4196ccf7&imgtype=jpg&er=1&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201412%2F17%2F20141217005427_mcu8x.thumb.700_0.jpeg")));
-        UserInfo testUser = new UserInfo("12345","Frank",
+        }, true);
+        RongIM.getInstance().refreshUserInfoCache(new UserInfo("12345", "Frank", Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551702963591&di=af106dc95e8083f71adc92ccacb6e1cf&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201407%2F19%2F20140719130553_ShUBe.thumb.700_0.jpeg")));
+        RongIM.getInstance().refreshUserInfoCache(new UserInfo("123", "me", Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553739821&di=63c556b5e35da2d4cb04f3dc4196ccf7&imgtype=jpg&er=1&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201412%2F17%2F20141217005427_mcu8x.thumb.700_0.jpeg")));
+        UserInfo testUser = new UserInfo("12345", "Frank",
                 Uri.parse("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551702963591&di=af106dc95e8083f71adc92ccacb6e1cf&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201407%2F19%2F20140719130553_ShUBe.thumb.700_0.jpeg"));
         friendList.add(testUser);
         List<String> picture = new ArrayList<>();
         picture.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552379805789&di=570a3ebfaeb8fd642fb464faeda75b1a&imgtype=0&src=http%3A%2F%2F00.minipic.eastday.com%2F20170411%2F20170411212923_f3b93bece00e4178f3bc684240278d9a_5.jpeg");
         picture.add("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=506455687,3587206558&fm=26&gp=0.jpg");
-        Actions actions = new Actions(testUser,picture,"It's a beautiful place!");
+        Actions actions = new Actions(testUser, picture, "It's a beautiful place!");
         actionsList.add(actions);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         friendListRecyclerView.setLayoutManager(layoutManager);
