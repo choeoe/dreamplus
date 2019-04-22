@@ -19,3 +19,24 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-dontwarn android.net.compatibility.**
+-dontwarn android.net.http.**
+-dontwarn com.android.internal.http.multipart.**
+-dontwarn org.apache.commons.**
+-dontwarn org.apache.http.**
+
+-ignorewarnings
+-libraryjars libs/ YoudaoBase.jar
+-libraryjars libs/ YoudaoCnDictOffline.jar
+-libraryjars libs/ YoudaoTranslateOnline.jar
+-libraryjars libs/ YoudaoTranslateOffline.jar
+
+-keep class com.youdao.sdk.ydtranslate.** { *;}
+-keep class com.youdao.sdk.chdict.** { *;}
+-keep class com.youdao.localtransengine.** { *;}
+-keep class com.youdao.sdk.ydonlinetranslate.** { *;}
+-keep class android.net.compatibility.**{*;}
+-keep class android.net.http.**{*;}
+-keep class com.android.internal.http.multipart.**{*;}
+-keep class org.apache.commons.**{*;}
+-keep class org.apache.http.**{*;}

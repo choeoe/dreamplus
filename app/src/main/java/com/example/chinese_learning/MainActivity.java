@@ -1,5 +1,6 @@
 package com.example.chinese_learning;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,12 @@ public class MainActivity extends BaseActivity {
 
 
     private String token = "KCydvkQ3uEqolb6dEEdbHaakbMPkWHmJrd7TosH6WThruiNq+JMmz91IaOPKazGai6c22flPDcWE4Bca1HwM/w==";
+
+
+    @OnClick(R.id.fanyi)
+    public void trans(){
+        startActivity(new Intent(this,YouDao.class));
+    }
 
     @OnClick(R.id.button)
     public void start(){
